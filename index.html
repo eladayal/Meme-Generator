@@ -6,12 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Meme Generator</title>
+    <script src="https://kit.fontawesome.com/f583d3725f.js" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="css/main.css" />
 
 
 </head>
-<body>
+<body onload="onInit()">
 
 
     <header>
@@ -33,11 +34,30 @@
 
     <main class="">
         <section class="main-gallery">
-
+            <div class="grid-container">
+              
         </section>
         
         <section class="main-meme-editor">
-            
+
+            <div class="meme-editor-container">
+
+                <div class="canvas-section">
+            <div class="canvas-container">
+                <canvas
+                    id="my-canvas"
+                    width="550"
+                    height="500"
+                ></canvas>
+            </div>
+        </div>
+            <div class="editor-container">
+
+                <input name="line-input" type="text" class="line-input" value="Example Line" autofocus/>                
+                <input name="line-input" type="text" class="line-input" value="Example Line" autofocus/>                
+            </div>
+
+        </div>
         </section>
     </main>
 
@@ -47,11 +67,14 @@
     <footer>
         <div class="footer-container">
             <div class="logo">memegen</div>
-            <small class="footer-copyrights">© 2021 memegen.com  -  All Rights Reserved  - Elad Ayal </small>
+            <small class="footer-copyrights ">© 2021 memegen.com  -  All Rights Reserved  - Elad Ayal </small>
          
         </div>
     </footer>
-
+    
+    <script src="gallery-Controller.js"></script>
+    <script src="js/services/meme-Service.js"></script>
+    <script src="meme-Controller.js"></script>
     <script src="js/main.js"></script>
 
 </body>
