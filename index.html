@@ -54,7 +54,10 @@
             <div class="editor-container">
 
                 <input name="line-input" type="text" class="line-input" value="Example Line" autofocus/>                
-                <input name="line-input" type="text" class="line-input" value="Example Line" autofocus/>                
+                
+                    <input name="line-txt-color" type="color" class="color-input" value="#ffffff" onchange="onSetTextColor()" title="Set Text Color" />
+                    <button><i class="fas fa-plus fa-2x" onclick="onIncreaseFontSize()"></i></button>
+                    <button><i class="fas fa-minus fa-2x" onclick="onDecreaseFontSize()"></i></button>
             </div>
 
         </div>

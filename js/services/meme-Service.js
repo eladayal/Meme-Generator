@@ -8,9 +8,9 @@ var gMeme = {
     lines: [
         {
             txt: 'Expample Line',
-            size: 20,
+            size: 45,
             align: 'left',
-            color: 'red'
+            color: 'white'
         }
     ]
 }
@@ -28,6 +28,14 @@ function getMeme(){
 return gMeme
 }
 
+
+function setTextColor(color){
+    var newTextColor = color    
+    gMeme.lines.map(function(line){
+        line.color = newTextColor
+    })
+    renderMeme() 
+}
 
 function setImg(meme){
 gCurrMeme = meme
