@@ -2,6 +2,13 @@
   box-sizing: border-box;
 }
 
+/* HELPERS */
+.resize-btn{
+  width: 39px;
+    height: 33px;
+}
+
+
 html {
   font-family: Montserrat;
   color: black;

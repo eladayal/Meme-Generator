@@ -52,12 +52,30 @@
             </div>
         </div>
             <div class="editor-container">
-
-                <input name="line-input" type="text" class="line-input" value="Example Line" autofocus/>                
                 
-                    <input name="line-txt-color" type="color" class="color-input" value="#ffffff" onchange="onSetTextColor()" title="Set Text Color" />
-                    <button><i class="fas fa-plus fa-2x" onclick="onIncreaseFontSize()"></i></button>
-                    <button><i class="fas fa-minus fa-2x" onclick="onDecreaseFontSize()"></i></button>
+                <div class="editor-panel">
+                <input name="line-input" type="text" class="line-input" placeholder="Example Line" autofocus/>                
+                
+                    <input name="txt-color" type="color" class="color-input" value="#ffffff" onchange="onSetTextColor()" title="Set Text Color" />
+                    <input name="stroke-txt-color" type="color" class="stroke-color-input" value="#000000" onchange="onSetTextStroke()" title="Set Text Stroke Color" />
+                    <button class="resize-btn switch-btn" onclick="onSwitchLines()" disabled><img src="./icons/switch.png" alt=""></button>
+                    <button onclick="onIncreaseFontSize()"><i class="fas fa-plus fa-2x" ></i></button>
+                    <button onclick="onDecreaseFontSize()"><i class="fas fa-minus fa-2x" ></i></button>
+                    <button onclick="onTextDirection('right')"><i class="fas fa-align-left fa-2x" ></i></button>
+                    <button onclick="onTextDirection('center')"><i class="fas fa-align-center fa-2x" ></i></button>
+                    <button onclick="onTextDirection('left')"><i class="fas fa-align-right fa-2x" ></i></button>
+                    <button onclick="onMoveText(true)" ><i class="fas fa-arrow-up fa-2x" ></i></i></button>
+                    <button onclick="onMoveText(false)"><i class="fas fa-arrow-down fa-2x" ></i></i></button>
+
+                    <button class="removeline-btn" onclick="onRemoveTextLine()" >Remove Text Line</button>
+                    <button class="newline-btn" onclick="onAddTextLine()" >Add New Text Line</button>
+
+                </div>
+                <div class="editor-panel">
+                </div>
+
+                 
+            </div>
             </div>
 
         </div>
@@ -75,6 +93,7 @@
         </div>
     </footer>
     
+    <script src="js/util-Service.js"></script>
     <script src="gallery-Controller.js"></script>
     <script src="js/services/meme-Service.js"></script>
     <script src="meme-Controller.js"></script>

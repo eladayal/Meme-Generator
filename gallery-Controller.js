@@ -39,7 +39,7 @@ function renderGallery() {
 
 
 function onImgSelect(imgId) {
-    console.log('imgId:', imgId);
+    // console.log('imgId:', imgId);
     
     const pickedMeme = gImgs.find(function (img) {
         return img.id === imgId
