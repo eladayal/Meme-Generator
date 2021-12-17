@@ -30,54 +30,42 @@ function resizeCanvas() {
 
 
 function renderMeme() {
-
-    const currMeme = getMeme()
+    const meme = getMeme()
     const memeImg = getMemeImg()
-    var currLine = getLine()
-    // const lineIdx = currMeme.selectedLineIdx
-    // console.log('lineIdx:', lineIdx);
-    // console.log('currLine:', currLine);
-    // console.log('currMeme:', currMeme);
 
     var img = new Image();
     img.src = `./${memeImg.url}`;
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
-        drawText(currLine.txt, currLine.color, currLine.size, currLine.align, currLine.strokeColor, gElCanvas.width /2, (gElCanvas.height - currLine.lineHeight) / 10 )
-        // drawText2(currLine.txt, currLine.color, currLine.size, currLine.align, currLine.strokeColor, gElCanvas.width / 2, gElCanvas.height / 1.1)
 
+        meme.lines.map(function (line, lineIdx) {
+            return drawText(line.txt, lineIdx, line.x, line.y)
+        })
     };
-
 }
 
 
-
-function drawText(txt, color, size, align, strokeColor, x, y) {
-    // var lineHeight = size * 1.286;
-console.log('x:', x);
-console.log('y:', y);
-
-
-    gCtx.textBaseline = 'top';
-    gCtx.textAlign = align;
+function drawText(txt, idx, x, y) {
+    const meme = getMeme()
     gCtx.lineWidth = 2.5;
-    gCtx.strokeStyle = strokeColor;
-    gCtx.font = `${size}px Impact`;
-    gCtx.fillStyle = color;
+    gCtx.textBaseline = 'top';
+    gCtx.textAlign = `${meme.lines[idx].align}`;
+    gCtx.strokeStyle = `${meme.lines[idx].strokeColor}`;
+    gCtx.font = `${meme.lines[idx].size}px ${meme.lines[idx].font}`;
+    gCtx.fillStyle = `${meme.lines[idx].color}`;
     gCtx.fillText(txt, x, y, gElCanvas.width);
     gCtx.strokeText(txt, x, y, gElCanvas.width);
-    // gCtx.strokeRect(x-150, y, x, lineHeight);
-
 }
-
 
 
 // ADDING AND REMOVING LINES
 function onAddTextLine() {
+
     gNumOfLines++
     if (gNumOfLines > 1) document.querySelector('.switch-btn').disabled = false
+    resetLineSetting()
     addNewLine()
-
+    renderMeme()
 }
 
 
@@ -88,30 +76,64 @@ function onRemoveTextLine() {
         document.querySelector('.switch-btn').disabled = true
     }
 
-    // removeLine()
-}
-
-// LINE SWITCHER
-function onSwitchLines() {
-
-    setLineIdx(gNumOfLines)
+    removeLine()
+    setCurrLineSettings()
     renderMeme()
 
 }
 
 
 
-function onLineWrite() {
-    const lineInput = document.querySelector('.line-input');
-    lineInput.addEventListener('input', setLineTxt);
+
+// LINE SWITCHER
+function onSwitchLines() {
+
+    setLineIdxOnSwitch()
+    setCurrLineSettings()
+    const lineIdx = getMeme().selectedLineIdx
+    document.querySelector('.line-num-span').innerText = lineIdx + 1
+
+    renderMeme()
 
 }
 
 
+// Setter for inputs
+
+function resetLineSetting() {
+    document.querySelector('.line-input').value = ' '
+    document.querySelector('.stroke-color-input').value = '#000000'
+    document.querySelector('.color-input').value = '#ffffff'
+}
+
+function setCurrLineSettings() {
+    const currLine = getLine()
+    document.querySelector('.line-input').value = currLine.txt
+    document.querySelector('.stroke-color-input').value = currLine.strokeColor
+    document.querySelector('.color-input').value = currLine.color
+}
+
+
+function onLineWrite() {
+    const lineInput = document.querySelector('.line-input');
+    lineInput.addEventListener('input', setLineTxt);
+    // renderMeme()
+
+}
+
+
+// Button Inputs
 function onSetTextStroke() {
     var strokeColorInput = document.querySelector('.stroke-color-input').value
-    console.log('strokeColorInput:', strokeColorInput);
     setStrokeColor(strokeColorInput)
+    renderMeme()
+
+}
+
+
+function onChangeFont() {
+    var fontSelect = document.getElementById('nav-select').value
+    setFont(fontSelect)
     renderMeme()
 
 }
@@ -123,10 +145,12 @@ function onSetTextColor() {
     renderMeme()
 }
 
+
 function onIncreaseFontSize() {
     IncreaseFontSize()
     renderMeme()
 }
+
 
 function onDecreaseFontSize() {
     DecreaseFontSize()
@@ -140,9 +164,24 @@ function onTextDirection(direction) {
 
 }
 
-function onMoveText(isUp){
 
-    moveText(isUp)
+function onMoveTextUpDown(isUp) {
+
+    moveTextUD(isUp)
     renderMeme()
 
 }
+
+
+function onMoveTextLftRgt(isLeft) {
+    moveTextLR(isLeft)
+    renderMeme()
+}
+
+// Download meme
+
+function downloadCanvas(elLink) {
+    const data = gElCanvas.toDataURL();
+    elLink.href = data;
+    elLink.download = 'Gen-X meme';
+  }

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Meme Generator</title>
+    <title>Meme Generator X</title>
     <script src="https://kit.fontawesome.com/f583d3725f.js" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="css/main.css" />
@@ -16,31 +16,37 @@
 
 
     <header>
-<div class="header-container">
-    <div class="logo">memegen</div>
+<div class="main-header flex">
 
-    <nav class="main-nav">
-        <ul class="">
-          <li><a href="#">Gallery</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Memes</a></li>
+<div class="header-container main-layout flex  space-between align-center">    
+    <div class="logo">Meme Generator <span class="logo-x">X</span></div>
+    <nav class="main-nav flex">
+        <ul class="clean-list flex ">
+            <li><a href="#">Gallery</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Memes</a></li>
         </ul>
         
-      </nav>
-
+    </nav>
+    
 </div>
+</div>
+
+<section class="subheader-container flex align-center">
+<div class="subheader main-layout ">Welcome To Meme Gen X! here you can create and design your very own memes</div>
+</section>
 
     </header>
 
     <main class="">
-        <section class="main-gallery">
+        <section class="main-gallery main-layout ">
             <div class="grid-container">
               
         </section>
         
-        <section class="main-meme-editor">
+        <section class="main-meme-editor display-none">
 
-            <div class="meme-editor-container">
+            <div class="meme-editor-container main-layout flex">
 
                 <div class="canvas-section">
             <div class="canvas-container">
@@ -51,28 +57,53 @@
                 ></canvas>
             </div>
         </div>
-            <div class="editor-container">
+            <div class="editor-container ">
                 
-                <div class="editor-panel">
+                <!-- <div class="editor-panel"> -->
                 <input name="line-input" type="text" class="line-input" placeholder="Example Line" autofocus/>                
                 
-                    <input name="txt-color" type="color" class="color-input" value="#ffffff" onchange="onSetTextColor()" title="Set Text Color" />
-                    <input name="stroke-txt-color" type="color" class="stroke-color-input" value="#000000" onchange="onSetTextStroke()" title="Set Text Stroke Color" />
-                    <button class="resize-btn switch-btn" onclick="onSwitchLines()" disabled><img src="./icons/switch.png" alt=""></button>
-                    <button onclick="onIncreaseFontSize()"><i class="fas fa-plus fa-2x" ></i></button>
-                    <button onclick="onDecreaseFontSize()"><i class="fas fa-minus fa-2x" ></i></button>
-                    <button onclick="onTextDirection('right')"><i class="fas fa-align-left fa-2x" ></i></button>
-                    <button onclick="onTextDirection('center')"><i class="fas fa-align-center fa-2x" ></i></button>
-                    <button onclick="onTextDirection('left')"><i class="fas fa-align-right fa-2x" ></i></button>
-                    <button onclick="onMoveText(true)" ><i class="fas fa-arrow-up fa-2x" ></i></i></button>
-                    <button onclick="onMoveText(false)"><i class="fas fa-arrow-down fa-2x" ></i></i></button>
+                <div>
+                <button class="removeline-btn button-style" onclick="onRemoveTextLine()"> <i class="fas fa-trash-alt"> </i>&nbsp;Remove Text Line</button>
+                <button class="newline-btn button-style" onclick="onAddTextLine()" >Add New Text Line</button>
+            </div>
+                <div>
+                <p>Edit Text: Line <span class="line-num-span"></span></p>
+                  <label for="">Text color:<input name="txt-color" type="color" class="padd-hgt color-input button-style" value="#ffffff" onchange="onSetTextColor()" title="Set Text Color" /></label>
+                  <label for=""> Stroke color: <input name="stroke-txt-color" type="color" class="padd-hgt stroke-color-input button-style " value="#000000" onchange="onSetTextStroke()" title="Set Text Stroke Color" />
+                   
+                    <select class="font-select" id="nav-select" onchange="onChangeFont();">
+                        <option value="Impact" selected>Impact</option>
+                        <!-- <option>Select Font</option> -->
+                        <option value="Arial">Arial</option>
+                        <option value="Sans Serif">Sans Serif</option>
+                        <option value="Comic Sans MS">Comic Sans MS</option>
+                        <option value="Times New Roman">Times New Roman</option>
+                        <option value="Courier New">Courier New</option>
+                        <option value="Verdana">Verdana</option>
+                        <option value="Trebuchet MS">Trebuchet MS</option>
+                        <option value="Arial Black">Arial Black</option>
+                        <option value="Bookman">Bookman</option>
+                        <option value="Garamond">Garamond</option>
+                        <option value="Palatino">Palatino</option>
+                        <option value="Georgia">Georgia</option>
+                      </select>
 
-                    <button class="removeline-btn" onclick="onRemoveTextLine()" >Remove Text Line</button>
-                    <button class="newline-btn" onclick="onAddTextLine()" >Add New Text Line</button>
-
+                    <button class="switch-btn button-style" onclick="onSwitchLines()" disabled><i class="fas fa-exchange-alt fa-2x"></i></button>
+                    <button class="button-style" onclick="onIncreaseFontSize()"><i class="fas fa-plus fa-2x" ></i></button>
+                    <button class="button-style" onclick="onDecreaseFontSize()"><i class="fas fa-minus fa-2x" ></i></button>
+                    <button class="button-style" onclick="onTextDirection('right')"><i class="fas fa-align-left fa-2x" ></i></button>
+                    <button class="button-style" onclick="onTextDirection('center')"><i class="fas fa-align-center fa-2x" ></i></button>
+                    <button class="button-style" onclick="onTextDirection('left')"><i class="fas fa-align-right fa-2x" ></i></button>
+                    </div>
+                    <div style="margin-block-end: 20px;">
+                    <p>Text Controler's</p>
+                    <button class="button-style" onclick="onMoveTextUpDown(true)" ><i class="fas fa-arrow-up fa-2x " ></i></i></button>
+                    <button class="button-style" onclick="onMoveTextUpDown(false)"><i class="fas fa-arrow-down fa-2x" ></i></i></button>
+                    <button class="button-style" onclick="onMoveTextLftRgt(true)"><i class="fas fa-arrow-left fa-2x" ></i></i></button>
+                    <button class="button-style" onclick="onMoveTextLftRgt(false)"><i class="fas fa-arrow-right fa-2x" ></i></i></button>
                 </div>
-                <div class="editor-panel">
-                </div>
+                <button class="button-style dowload-btn" ><a href="#" onclick="downloadCanvas(this)" download="myphoto"><i class="fas fa-download"></i>&nbsp;Download</a></button>
+                <!-- </div> -->
 
                  
             </div>
@@ -85,10 +116,10 @@
 
 
 
-    <footer>
-        <div class="footer-container">
-            <div class="logo">memegen</div>
-            <small class="footer-copyrights ">© 2021 memegen.com  -  All Rights Reserved  - Elad Ayal </small>
+    <footer class="main-footer">
+        <div class="footer-container flex flex-direction-column space-around align-center">
+            <div class="logo">Meme Generator <span class="logo-x">X</span></div>
+            <small class="footer-copyrights ">© 2021 MemegenX.com  -  All Rights Reserved  - Elad Ayal </small>
          
         </div>
     </footer>
