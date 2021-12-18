@@ -17,11 +17,8 @@ var gMeme = {
             y: 40,
             x: 300
         },
-
     ]
 }
-
-
 
 
 function addNewLine() {
@@ -33,15 +30,12 @@ function addNewLine() {
         color: '#ffffff',
         font: 'Impact',
         strokeColor: '#000000',
-        y: 480,
+        y: (gMeme.lines.length > 1) ? 250 : 480,
         x: 300
     }
 
     gMeme.lines.push(newLine)
     gMeme.selectedLineIdx = (gMeme.lines.length - 1)
-
-    console.log('index after adding a line', gMeme.selectedLineIdx);
-
 }
 
 
@@ -51,8 +45,6 @@ function removeLine() {
     gMeme.lines.splice(lineIdx, 1)
     if (gMeme.selectedLineIdx > gMeme.lines.length) gMeme.selectedLineIdx--
     if (gMeme.selectedLineIdx === gMeme.lines.length) gMeme.selectedLineIdx = 0
-
-
 }
 
 function setLineIdxOnSwitch() {
@@ -61,7 +53,6 @@ function setLineIdxOnSwitch() {
     if (gMeme.selectedLineIdx > gMeme.lines.length) gMeme.selectedLineIdx--
     if (gMeme.selectedLineIdx === gMeme.lines.length) gMeme.selectedLineIdx = 0
     console.log('gMeme.selectedLineIdx:', gMeme.selectedLineIdx);
-
     renderMeme()
 }
 
@@ -95,14 +86,10 @@ function setLineTxt(ev) {
 
 
 // Text font settings
-
-function setFont(fontSelect){
+function setFont(fontSelect) {
     var line = getLine()
     line.font = fontSelect
-console.log('gMeme.lines:', gMeme.lines);
-
 }
-
 
 
 function setStrokeColor(color) {
@@ -157,6 +144,3 @@ function setTextDirec(direction) {
     var line = getLine()
     line.align = direction
 }
-
-
-

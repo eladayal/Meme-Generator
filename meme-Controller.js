@@ -11,7 +11,6 @@ function InitEditor() {
     gCtx = gElCanvas.getContext('2d')
     resizeCanvas()
     renderCanvas()
-    // renderMeme()
     onLineWrite()
 }
 
@@ -79,10 +78,7 @@ function onRemoveTextLine() {
     removeLine()
     setCurrLineSettings()
     renderMeme()
-
 }
-
-
 
 
 // LINE SWITCHER
@@ -99,7 +95,6 @@ function onSwitchLines() {
 
 
 // Setter for inputs
-
 function resetLineSetting() {
     document.querySelector('.line-input').value = ' '
     document.querySelector('.stroke-color-input').value = '#000000'
@@ -179,7 +174,6 @@ function onMoveTextLftRgt(isLeft) {
 }
 
 // Download meme
-
 function downloadCanvas(elLink) {
     const data = gElCanvas.toDataURL();
     elLink.href = data;

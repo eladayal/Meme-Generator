@@ -7,12 +7,15 @@
 
     <title>Meme Generator X</title>
     <script src="https://kit.fontawesome.com/f583d3725f.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
 
     <link rel="stylesheet" href="css/main.css" />
 
 
 </head>
 <body onload="onInit()">
+
+<div class="main-screen" onclick="toggleMenu()"></div>
 
 
     <header>
@@ -22,13 +25,14 @@
     <div class="logo">Meme Generator <span class="logo-x">X</span></div>
     <nav class="main-nav flex">
         <ul class="clean-list flex ">
-            <li><a href="#">Gallery</a></li>
-            <li><a href="#">About</a></li>
+            <li><a onclick="backToHomePage(false)" href="#">Gallery</a></li>
             <li><a href="#">Memes</a></li>
+            <li><a href="#">About</a></li>
         </ul>
         
     </nav>
-    
+    <i class="btn-menu fas fa-bars fa-2x" onclick="toggleMenu()"></i>
+
 </div>
 </div>
 
@@ -38,17 +42,38 @@
 
     </header>
 
-    <main class="">
-        <section class="main-gallery main-layout ">
+    <main>
+        <section class="main-gallery main-layout">
+          
+            <div class="search-bar flex justify-center">
+              <label>Search Meme: &nbsp <input list="categories" name="search" type="text" class="search-input" placeholder="Funny, Tv, Animals" /></label>
+              <datalist id="categories">
+                  <option value="Animals">
+                <option value="Tv">
+                <option value="2 Liner">
+                <option value="Satire">
+                <option value="Cute">
+                <option value="Politics">
+                <option value="Funny">
+                <option value="Kid">
+                <option value="Win">
+              </datalist>
+            </div> 
+            
             <div class="grid-container">
-              
+                </div>
+            
+                <div class="no-memes-toshow"></div>
+
         </section>
         
-        <section class="main-meme-editor display-none">
+        <section class="main-meme-editor display-none ">
 
-            <div class="meme-editor-container main-layout flex">
+            <div class="meme-editor-container main-layout flex ">
 
                 <div class="canvas-section">
+
+
             <div class="canvas-container">
                 <canvas
                     id="my-canvas"
@@ -59,7 +84,6 @@
         </div>
             <div class="editor-container ">
                 
-                <!-- <div class="editor-panel"> -->
                 <input name="line-input" type="text" class="line-input" placeholder="Example Line" autofocus/>                
                 
                 <div>
@@ -71,9 +95,15 @@
                   <label for="">Text color:<input name="txt-color" type="color" class="padd-hgt color-input button-style" value="#ffffff" onchange="onSetTextColor()" title="Set Text Color" /></label>
                   <label for=""> Stroke color: <input name="stroke-txt-color" type="color" class="padd-hgt stroke-color-input button-style " value="#000000" onchange="onSetTextStroke()" title="Set Text Stroke Color" />
                    
+                    
+                    <button class="switch-btn button-style" onclick="onSwitchLines()" disabled><i class="fas fa-exchange-alt fa-2x"></i></button>
+                    <button class="button-style" onclick="onIncreaseFontSize()" title="Increase Font size"><i class="fas fa-plus fa-2x" ></i></button>
+                    <button class="button-style" onclick="onDecreaseFontSize()" title="Decrease Font Size"><i class="fas fa-minus fa-2x" ></i></button>
+                    <button class="button-style" onclick="onTextDirection('right')" title="Text Direction Left To Right"><i class="fas fa-align-left fa-2x" ></i></button>
+                    <button class="button-style" onclick="onTextDirection('center')" title="Text Direction Right To Left"><i class="fas fa-align-center fa-2x" ></i></button>
+                    <button class="button-style" onclick="onTextDirection('left')" title="Set Text At Center"><i class="fas fa-align-right fa-2x" ></i></button>
                     <select class="font-select" id="nav-select" onchange="onChangeFont();">
                         <option value="Impact" selected>Impact</option>
-                        <!-- <option>Select Font</option> -->
                         <option value="Arial">Arial</option>
                         <option value="Sans Serif">Sans Serif</option>
                         <option value="Comic Sans MS">Comic Sans MS</option>
@@ -87,22 +117,17 @@
                         <option value="Palatino">Palatino</option>
                         <option value="Georgia">Georgia</option>
                       </select>
-
-                    <button class="switch-btn button-style" onclick="onSwitchLines()" disabled><i class="fas fa-exchange-alt fa-2x"></i></button>
-                    <button class="button-style" onclick="onIncreaseFontSize()"><i class="fas fa-plus fa-2x" ></i></button>
-                    <button class="button-style" onclick="onDecreaseFontSize()"><i class="fas fa-minus fa-2x" ></i></button>
-                    <button class="button-style" onclick="onTextDirection('right')"><i class="fas fa-align-left fa-2x" ></i></button>
-                    <button class="button-style" onclick="onTextDirection('center')"><i class="fas fa-align-center fa-2x" ></i></button>
-                    <button class="button-style" onclick="onTextDirection('left')"><i class="fas fa-align-right fa-2x" ></i></button>
                     </div>
                     <div style="margin-block-end: 20px;">
                     <p>Text Controler's</p>
-                    <button class="button-style" onclick="onMoveTextUpDown(true)" ><i class="fas fa-arrow-up fa-2x " ></i></i></button>
-                    <button class="button-style" onclick="onMoveTextUpDown(false)"><i class="fas fa-arrow-down fa-2x" ></i></i></button>
-                    <button class="button-style" onclick="onMoveTextLftRgt(true)"><i class="fas fa-arrow-left fa-2x" ></i></i></button>
-                    <button class="button-style" onclick="onMoveTextLftRgt(false)"><i class="fas fa-arrow-right fa-2x" ></i></i></button>
+                    <button class="button-style" onclick="onMoveTextUpDown(true)" title="Move Text Up"><i class="fas fa-arrow-up fa-2x " ></i></i></button>
+                    <button class="button-style" onclick="onMoveTextUpDown(false)" title="Move Text Down"><i class="fas fa-arrow-down fa-2x" ></i></i></button>
+                    <button class="button-style" onclick="onMoveTextLftRgt(true)" title="Move Text Left"><i class="fas fa-arrow-left fa-2x" ></i></i></button>
+                    <button class="button-style" onclick="onMoveTextLftRgt(false)" title="Move Text Right"><i class="fas fa-arrow-right fa-2x" ></i></i></button>
                 </div>
-                <button class="button-style dowload-btn" ><a href="#" onclick="downloadCanvas(this)" download="myphoto"><i class="fas fa-download"></i>&nbsp;Download</a></button>
+                
+                <button class="button-style dowload-btn" ><a href="#" onclick="downloadCanvas(this)" download="myphoto"><i class="fas fa-download"></i>&nbsp;Download Meme</a></button>
+                <button class="button-style " onclick="backToHomePage(true)">Return to Gallery</button>
                 <!-- </div> -->
 
                  
