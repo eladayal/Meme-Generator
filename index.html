@@ -26,8 +26,8 @@
     <nav class="main-nav flex">
         <ul class="clean-list flex ">
             <li><a onclick="backToHomePage(false)" href="#">Gallery</a></li>
-            <li><a href="#">Memes</a></li>
-            <li><a href="#">About</a></li>
+            <!-- <li><a href="#">Memes</a></li> -->
+            <li><a href="#about">About</a></li>
         </ul>
         
     </nav>
@@ -37,7 +37,7 @@
 </div>
 
 <section class="subheader-container flex align-center">
-<div class="subheader main-layout ">Welcome To Meme Gen X! here you can create and design your very own memes</div>
+<div class="subheader main-layout ">Welcome To Meme Gen X! here you can design your very own meme's</div>
 </section>
 
     </header>
@@ -50,13 +50,17 @@
               <datalist id="categories">
                   <option value="Animals">
                 <option value="Tv">
+                <option value="Funny">
+                <option value="original meme">
                 <option value="2 Liner">
                 <option value="Satire">
                 <option value="Cute">
                 <option value="Politics">
-                <option value="Funny">
                 <option value="Kid">
                 <option value="Win">
+                <option value="Office">
+                <option value="Economy">
+                <option value="Famous">
               </datalist>
             </div> 
             
@@ -67,9 +71,9 @@
 
         </section>
         
-        <section class="main-meme-editor display-none ">
+        <section class="main-meme-editor visibility-hidden">
 
-            <div class="meme-editor-container main-layout flex ">
+            <div class="meme-editor-container main-layout flex">
 
                 <div class="canvas-section">
 
@@ -84,7 +88,7 @@
         </div>
             <div class="editor-container ">
                 
-                <input name="line-input" type="text" class="line-input" placeholder="Example Line" autofocus/>                
+                <input name="line-input" type="text" class="line-input" placeholder="Example Line" />                
                 
                 <div>
                 <button class="removeline-btn button-style" onclick="onRemoveTextLine()"> <i class="fas fa-trash-alt"> </i>&nbsp;Remove Text Line</button>
@@ -127,8 +131,8 @@
                 </div>
                 
                 <button class="button-style dowload-btn" ><a href="#" onclick="downloadCanvas(this)" download="myphoto"><i class="fas fa-download"></i>&nbsp;Download Meme</a></button>
+            
                 <button class="button-style " onclick="backToHomePage(true)">Return to Gallery</button>
-                <!-- </div> -->
 
                  
             </div>
@@ -136,6 +140,31 @@
 
         </div>
         </section>
+
+        <section id="about" class=" main-about">
+            <div class="about-container main-layout flex">
+
+                <div class="img-container">
+                    <img class="about-img" src="./img/myPhoto.jpeg" alt="">
+                </div>
+
+                <div class="info-container flex flex-direction-column">
+                <h3> Elad Ayal</h3>
+                <h4>Creator, Friend, Colleague</h4>
+                
+                <p>“It’s a dangerous business, going out your door. You step onto the road, and if you don’t 
+                    keep your feet, there’s no knowing where you might be swept off to.” — Frodo ("The Lord of the Rings”)</p>
+                <p class="second-p">This project was done as a part of Sprint #2 at Coding Academy</p>
+                <div>
+                    <a href="https://www.facebook.com/elad.ayal" target="_blank"><i class="fab fa-facebook-square fa-4x"></i></a>
+                    <a href="https://github.com/eladayal" target="_blank"><i class="fab fa-github-square fa-4x"></i></a>
+                    <a href="https://youtu.be/dQw4w9WgXcQ" target="_blank"><i class="fab fa-youtube-square fa-4x"></i></a>
+            </div>
+            </div>
+
+            </div>
+        </section>
+
     </main>
 
 

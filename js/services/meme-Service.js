@@ -8,7 +8,7 @@ var gMeme = {
     lines: [
         {
             id: makeId(),
-            txt: 'Expample Line',
+            txt: 'Write Somthing',
             size: 45,
             align: 'center',
             color: '#ffffff',
@@ -24,7 +24,7 @@ var gMeme = {
 function addNewLine() {
     const newLine = {
         id: makeId(),
-        txt: 'Expample Line',
+        txt: 'Write Somthing',
         size: 45,
         align: 'center',
         color: '#ffffff',
@@ -42,6 +42,7 @@ function addNewLine() {
 
 function removeLine() {
     const lineIdx = gMeme.selectedLineIdx
+    if(gMeme.lines.length === 1)return
     gMeme.lines.splice(lineIdx, 1)
     if (gMeme.selectedLineIdx > gMeme.lines.length) gMeme.selectedLineIdx--
     if (gMeme.selectedLineIdx === gMeme.lines.length) gMeme.selectedLineIdx = 0
