@@ -14,8 +14,8 @@ var gMeme = {
             color: '#ffffff',
             font: 'Impact',
             strokeColor: '#000000',
-            y: 40,
-            x: 300
+            y: 60,
+            x: 250
         },
     ]
 }
@@ -30,8 +30,8 @@ function addNewLine() {
         color: '#ffffff',
         font: 'Impact',
         strokeColor: '#000000',
-        y: (gMeme.lines.length > 1) ? 250 : 480,
-        x: 300
+        y: (gMeme.lines.length > 1) ? 280 : 510,
+        x: 250
     }
 
     gMeme.lines.push(newLine)
@@ -39,22 +39,18 @@ function addNewLine() {
 }
 
 
-
 function removeLine() {
     const lineIdx = gMeme.selectedLineIdx
-    if(gMeme.lines.length === 1)return
+    if (gMeme.lines.length === 1) return
     gMeme.lines.splice(lineIdx, 1)
     if (gMeme.selectedLineIdx > gMeme.lines.length) gMeme.selectedLineIdx--
     if (gMeme.selectedLineIdx === gMeme.lines.length) gMeme.selectedLineIdx = 0
 }
 
 function setLineIdxOnSwitch() {
-
     gMeme.selectedLineIdx++
     if (gMeme.selectedLineIdx > gMeme.lines.length) gMeme.selectedLineIdx--
     if (gMeme.selectedLineIdx === gMeme.lines.length) gMeme.selectedLineIdx = 0
-    console.log('gMeme.selectedLineIdx:', gMeme.selectedLineIdx);
-    renderMeme()
 }
 
 
@@ -82,7 +78,6 @@ function setLineTxt(ev) {
     var newText = ev.target.value
     var line = getLine()
     line.txt = newText
-    renderMeme()
 }
 
 

@@ -7,7 +7,7 @@
 
     <title>Meme Generator X</title>
     <script src="https://kit.fontawesome.com/f583d3725f.js" crossorigin="anonymous"></script>
-    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
 
     <link rel="stylesheet" href="css/main.css" />
 
@@ -21,11 +21,12 @@
     <header>
 <div class="main-header flex">
 
+
 <div class="header-container main-layout flex  space-between align-center">    
     <div class="logo">Meme Generator <span class="logo-x">X</span></div>
     <nav class="main-nav flex">
         <ul class="clean-list flex ">
-            <li><a onclick="backToHomePage(false)" href="#">Gallery</a></li>
+            <li><a onclick="backToHomePage()" href="#gallery">Gallery</a></li>
             <!-- <li><a href="#">Memes</a></li> -->
             <li><a href="#about">About</a></li>
         </ul>
@@ -43,12 +44,12 @@
     </header>
 
     <main>
-        <section class="main-gallery main-layout">
+        <section id="gallery" class="main-gallery main-layout">
           
             <div class="search-bar flex justify-center">
-              <label>Search Meme: &nbsp <input list="categories" name="search" type="text" class="search-input" placeholder="Funny, Tv, Animals" /></label>
+              <label>Search Meme: &nbsp <input oninput="filterMemes(event)" list="categories" name="search" type="text" class="search-input" placeholder="Funny, Tv, Animals" /></label>
               <datalist id="categories">
-                  <option value="Animals">
+                <option value="Animals">
                 <option value="Tv">
                 <option value="Funny">
                 <option value="original meme">
@@ -67,15 +68,12 @@
             <div class="grid-container">
                 </div>
             
-                <div class="no-memes-toshow"></div>
-
         </section>
         
-        <section class="main-meme-editor visibility-hidden">
+        <section class="main-meme-editor display-none">
 
-            <div class="meme-editor-container main-layout flex">
+            <div class="meme-editor-container main-layout flex ">
 
-                <div class="canvas-section">
 
 
             <div class="canvas-container">
@@ -85,27 +83,27 @@
                     height="500"
                 ></canvas>
             </div>
-        </div>
             <div class="editor-container ">
                 
-                <input name="line-input" type="text" class="line-input" placeholder="Example Line" />                
+                <input oninput="onLineWrite(event)" name="line-input" type="text" class="line-input" placeholder="Example Line" />                
                 
                 <div>
                 <button class="removeline-btn button-style" onclick="onRemoveTextLine()"> <i class="fas fa-trash-alt"> </i>&nbsp;Remove Text Line</button>
                 <button class="newline-btn button-style" onclick="onAddTextLine()" >Add New Text Line</button>
             </div>
                 <div>
-                <p>Edit Text: Line <span class="line-num-span"></span></p>
+                    <div>
+                <p>Edit Text:</p>
                   <label for="">Text color:<input name="txt-color" type="color" class="padd-hgt color-input button-style" value="#ffffff" onchange="onSetTextColor()" title="Set Text Color" /></label>
                   <label for=""> Stroke color: <input name="stroke-txt-color" type="color" class="padd-hgt stroke-color-input button-style " value="#000000" onchange="onSetTextStroke()" title="Set Text Stroke Color" />
-                   
+                  </div>
                     
-                    <button class="switch-btn button-style" onclick="onSwitchLines()" disabled><i class="fas fa-exchange-alt fa-2x"></i></button>
+                    <button class="switch-btn button-style" onclick="onSwitchLines()" title ="Switch Line" disabled><i class="fas fa-exchange-alt fa-2x"></i></button>
                     <button class="button-style" onclick="onIncreaseFontSize()" title="Increase Font size"><i class="fas fa-plus fa-2x" ></i></button>
                     <button class="button-style" onclick="onDecreaseFontSize()" title="Decrease Font Size"><i class="fas fa-minus fa-2x" ></i></button>
-                    <button class="button-style" onclick="onTextDirection('right')" title="Text Direction Left To Right"><i class="fas fa-align-left fa-2x" ></i></button>
+                    <button class="button-style" onclick="onTextDirection('start')" title="Text Direction Left To Right"><i class="fas fa-align-left fa-2x" ></i></button>
                     <button class="button-style" onclick="onTextDirection('center')" title="Text Direction Right To Left"><i class="fas fa-align-center fa-2x" ></i></button>
-                    <button class="button-style" onclick="onTextDirection('left')" title="Set Text At Center"><i class="fas fa-align-right fa-2x" ></i></button>
+                    <button class="button-style" onclick="onTextDirection('end')" title="Set Text At Center"><i class="fas fa-align-right fa-2x" ></i></button>
                     <select class="font-select" id="nav-select" onchange="onChangeFont();">
                         <option value="Impact" selected>Impact</option>
                         <option value="Arial">Arial</option>
@@ -132,7 +130,7 @@
                 
                 <button class="button-style dowload-btn" ><a href="#" onclick="downloadCanvas(this)" download="myphoto"><i class="fas fa-download"></i>&nbsp;Download Meme</a></button>
             
-                <button class="button-style " onclick="backToHomePage(true)">Return to Gallery</button>
+                <button class="button-style " onclick="onPickDiffMeme()">Pick a Different Meme</button>
 
                  
             </div>
@@ -179,8 +177,8 @@
     </footer>
     
     <script src="js/util-Service.js"></script>
-    <script src="gallery-Controller.js"></script>
     <script src="js/services/meme-Service.js"></script>
+    <script src="gallery-Controller.js"></script>
     <script src="meme-Controller.js"></script>
     <script src="js/main.js"></script>
 

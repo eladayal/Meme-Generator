@@ -156,26 +156,29 @@ img {
   margin-inline-end: 60px;
 }
 
+.fa-bars:before {
+  color: #c5c6c7;
+}
+
 /* SUB HEADER */
 .subheader-container {
   background-color: #D06224;
-  height: 60px;
 }
 
 .subheader {
   text-align: center;
   font-size: 1.2rem;
   font-weight: 700;
-  padding: 8px;
   color: #262626;
   text-shadow: -1px 1px 0px #dadada8c;
+  padding-block: 10px;
 }
 
 /* MAIN */
 
 main {
-  /* height: 100%; */
-  background-color: #1f2833;
+  min-height: 75vh;
+    background-color: #1f2833;
 }
 
 
@@ -194,8 +197,8 @@ datalist {
   display: none;
 }
 
-/* GALLERY */
 
+/* GALLERY */
 .grid-container {
   max-height: 100%;
   text-align: center;
@@ -231,6 +234,7 @@ datalist {
 /* MEME EDITOR */
 .meme-editor-container {
   justify-content: center;
+  flex-direction: column;
   flex-wrap: nowrap;
   width: 100%;
 }
@@ -255,7 +259,6 @@ datalist {
 
 .font-select select {
   padding: 5px 8px;
-  width: 130%;
   border: none;
   box-shadow: none;
   background: transparent;
@@ -271,9 +274,11 @@ datalist {
 .canvas-container {
   background-color: rgb(80, 80, 80);
   margin: 0 auto;
-  padding: 25px;
+  padding: 15px;
   width: 100%;
-  position: relative;
+  min-width: 600px;
+
+  height: 600px;
 }
 
 canvas {
@@ -284,7 +289,8 @@ canvas {
 
 .editor-container {
   padding: 25px;
-  width: 60%;
+  width:100%;
+  min-width: 600px;
   line-height: 20px;
   text-align: center;
   background-color: #505050;
@@ -368,8 +374,7 @@ margin-inline-end: 20px;
 .footer-container {
   width: 100%;
   background-color: #414141;
-  height: 105px;
-  /* position:absolute; */
+ 
 }
 
 .main-footer .logo {
@@ -377,6 +382,7 @@ margin-inline-end: 20px;
   font-family: russo, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: #45a29e;
   text-shadow: -1px 3px 1px black;
+  padding-block: 20px;
 }
 
 .footer-copyrights {
@@ -384,6 +390,8 @@ margin-inline-end: 20px;
   color: white;
   letter-spacing: 1px;
   text-decoration: overline;
+  padding-block: 10px;
+
 }
 
 /* BUTTON CSS */
@@ -438,7 +446,7 @@ margin-inline-end: 20px;
 
 .padd-hgt {
   height: 30px;
-  margin-inline-start: 24px;
+  /* margin-inline-start: 24px; */
 }
 
 /* SCREENS */
@@ -492,32 +500,33 @@ body.menu-open .main-screen {
 }
 
 
-@media (max-width: 1100px) {
+/* @media (max-width: 1155px) {
   .meme-editor-container {
     flex-direction: column;
   }
   .canvas-container {
-    background-color: rgb(80, 80, 80);
-    margin: 0;
+    min-width: 500px;
+
     padding: 10px;
-    /* max-width: 700px; */
   }
 
   .editor-container {
     padding: 13px;
-    width:100%;
+    width: 100%;
+    min-width: 500px;
     line-height: 3px;
     text-align: center;
     font-size: 1.4rem;
     font-weight: bold;
   }
-}
+} */
 
 /* MEDIUM  */
 @media (min-width: 850px) {
   .main-layout {
     max-width: 835px;
   }
+
   .main-header .main-nav a {
     width: 132px;
     height: 105px;
@@ -530,9 +539,7 @@ body.menu-open .main-screen {
     border-bottom: 4px solid #66fcf1;
   }
 
-  .canvas-container {
-    height: 100%;
-  }
+ 
   .color-input{
 
     margin-block-end: 15px;
@@ -560,9 +567,30 @@ body.menu-open .main-screen {
 }
 
 
+
 /* LARGE */
-@media (min-width: 1120px) {
+@media (min-width: 1155px) {
   .main-layout {
     max-width: 1150px;
+  }
+
+  .meme-editor-container {
+    flex-direction: row;
+  }
+  
+  .canvas-container {
+    min-width: 600px;
+
+    padding: 25px;
+  }
+
+  .editor-container {
+    padding: 13px;
+    width: 100%;
+    /* min-width: 500px; */
+    line-height: 3px;
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: bold;
   }
 }
